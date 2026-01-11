@@ -4,30 +4,22 @@ public class H1_main {
 
     public static void main(String[] args) {
 
-        Patient A = new Patient("A", 1);
-        Patient B = new Patient("B", 10);
-        Patient C = new Patient("C", 5);
-        Patient D = new Patient("D", 7);
+        Patient p1 = new Patient("Chiara", 1);
+        Patient p2 = new Patient("Felix", 2);
+        Patient p3 = new Patient("Dilara", 3);
 
-        PrioListe prioListe = new PrioListe();
+        System.out.println(p1.getName().equals("Chiara") && p1.getPrio() == 1);
+        System.out.println(p2.getName().equals("Felix") && p2.getPrio() == 2);
+        System.out.println(p3.getName().equals("Dilara") && p3.getPrio() == 3);
 
-        prioListe.addPatient(A);
-        printPrioListe(prioListe);
-        prioListe.addPatient(B);
-        printPrioListe(prioListe);
-        prioListe.addPatient(C);
+        PrioListe prio = new PrioListe(); prio.addPatient(p1); prio.addPatient(p2); prio.addPatient(p3);
 
-        printPrioListe(prioListe);
+        System.out.println(false);// System.out.println(prio.getPosition(p2) == 1 && prio.getPosition(p3) == 2);   // Typo
 
-        prioListe.addPatient(D);
+        System.out.println(prio.getNextPatient().getName().equals("Chiara"));   // ??? Getter
 
-        printPrioListe(prioListe);
+        System.out.println(false);//System.out.println(prio.getPosition(p2) == 0);   // Typo
 
-        System.out.println(prioListe.getNextPatient().getName());
-
-        printPrioListe(prioListe);
-
-        System.out.println(prioListe.getPostion(C));
     }
 
     private static void printPrioListe(PrioListe prioListe){

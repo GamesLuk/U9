@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Bus {
 
-    private ArrayList<Passenger> passengers;
+    public ArrayList<Passenger> passengers;
 
     public Bus(){
         this.passengers = new ArrayList<>();
@@ -14,14 +14,14 @@ public class Bus {
 
     public void enterBus(Passenger p){
         passengers.add(p);
-        System.out.println(p.getName() + " ist dem Bus für " + p.getPlanned() + " Station(en) zugestiegen!");
+        //System.out.println(p.getName() + " ist dem Bus für " + p.getPlanned() + " Station(en) zugestiegen!");
     }
 
     public void exitBus(){
         for (Passenger passenger : passengers){
             if (passenger.getPlanned() == passenger.getVisited()){
                 passengers.remove(passenger);
-                System.out.println(passenger.getName() + " hat den Bus nach " + passenger.getPlanned() + " Station(en) verlassen!");
+                //System.out.println(passenger.getName() + " hat den Bus nach " + passenger.getPlanned() + " Station(en) verlassen!");
             }
         }
     }
@@ -56,10 +56,13 @@ public class Bus {
 
     public void transferPassengers(Bus otherBus, String[] passengerNames){
         List<String> passengerNamesList = new ArrayList<>(Arrays.stream(passengerNames).toList());
+        //System.out.println(passengerNamesList);
+        //System.out.println(passengers.toString());
         for(Passenger passenger : passengers){
+            //System.out.println(passenger.getName());
             if(passengerNamesList.contains(passenger.getName())){
                 otherBus.enterBus(passenger);
-                passengers.remove(passenger);
+                passengers.remove(passenger);   // !!! Keine Veränderung an den Objekten in for each
             }
         }
     }
